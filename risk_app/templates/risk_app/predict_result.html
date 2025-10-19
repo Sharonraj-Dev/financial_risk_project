@@ -1,0 +1,18 @@
+{% extends 'risk_app/base.html' %}
+{% block content %}
+  <h2>Prediction result</h2>
+  <p><strong>Predicted risk:</strong>
+    {% if prediction == 1 %}<span class="text-danger">High</span>{% else %}<span class="text-success">Low</span>{% endif %}
+  </p>
+  {% if prob %}
+    <p><strong>Model confidence (approx):</strong> {{ prob|floatformat:2 }}</p>
+  {% endif %}
+  <h3>Saved applicant</h3>
+  <ul>
+    <li>ID: {{ applicant.id }}</li>
+    <li>Income: {{ applicant.income }}</li>
+    <li>Loan amount: {{ applicant.loan_amount }}</li>
+    <li>Credit score: {{ applicant.credit_score }}</li>
+  </ul>
+  <a href="/" class="btn btn-secondary">Back</a>
+{% endblock %}

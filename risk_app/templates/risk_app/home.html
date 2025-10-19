@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Risk Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Financial Risk Prediction</h2>
+        <input type="text" name="income" placeholder="Annual Income (₹)" required>
+        <input type="text" name="loan_amount" placeholder="Loan Amount (₹)" required>
+        <input type="text" name="credit_score" placeholder="Credit Score" required>
+        <button type="submit">Predict Risk</button>
+
+        {% if result %}
+            <h3 style="margin-top:20px;">Result: {{ result }}</h3>
+        {% endif %}
+    </form>
+</body>
+</html>
